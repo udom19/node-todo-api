@@ -12,15 +12,22 @@ MongoClient.connect(url, (err, db) => {
 
         // Delete Many
         // const mydb = db.db('TodoApp');
-        // mydb.collection('Todos').deleteMany({text: 'Eat Lunch'}).then((result) =>{
+        // mydb.collection('Users').deleteMany({name: 'Jerry Paulinus'}).then((result) =>{
         //     console.log(result);
         // });
 
         // Delete One
-        const mydb = db.db('TodoApp');
-        mydb.collection('Todos').deleteOne({text: 'Eat Lunch'}).then((result) =>{
-            console.log(result);
-        });
+        // const mydb = db.db('TodoApp');
+        // mydb.collection('Todos').deleteOne({text: 'Eat Lunch'}).then((result) =>{
+        //     console.log(result);
+        // });
 
+        // Find One and Delete
+         const mydb = db.db('TodoApp');
+         mydb.collection('Users').findOneAndDelete({
+             _id: new ObjectID('5b85fafddae54b135859d7bf')
+            }).then((results) =>{
+             console.log(JSON.stringify(results, undefined, 2));
+         })
      // db.close();
 });
